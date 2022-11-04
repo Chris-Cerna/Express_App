@@ -1,0 +1,20 @@
+.imagenes{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    
+}
+.llantas{
+    width: 15%;
+    height: 15%;
+    padding-bottom: 50px;
+    padding-left: 20px;
+}
+
+.formulario{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+
