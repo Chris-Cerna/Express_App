@@ -7,13 +7,15 @@ export const Main = () => {
 
     /* calcular precio con envio*/
 
-    const [totalEncontrado, setTotalEncontrado] = useState(false)
+    
     const [precioProducto, setPrecioProducto] = useState("")
     const [CatchText, setCatchText] = useState("")
-    const [recargoTotal, setRecargoTotal] = useState(0)
-    const [precioRecuperado, setPrecioRecuperado] = useState(0)
-    const [subTotal2, setSubtotal2] = useState(0)
-    const [total, setTotal] = useState(0)
+    const [recargoTotal, setRecargoTotal] = useState("")
+    const [precioRecuperado, setPrecioRecuperado] = useState("")
+    const [subTotal2, setSubtotal2] = useState("")
+    const [total, setTotal] = useState("")
+    const [Validacion, setValidacion] = useState(false)
+    let totalEncontrado = false
     
     const envio = 66
     const Subtotal =  envio + precioProducto
@@ -23,13 +25,20 @@ export const Main = () => {
     let subTotal2 = 0
     let total = 0*/
 
-    console.log(total)
+    
+   
 
     useEffect(() => {
       setPrecioRecuperado(total - recargoTotal - envio)
       setRecargoTotal(total * 0.04)
       setSubtotal2(Subtotal + recargoTotal)
     }, [precioProducto])
+
+    useEffect(() => {
+        setPrecioRecuperado(total - recargoTotal - envio)
+        setRecargoTotal(total * 0.04)
+        setSubtotal2(Subtotal + recargoTotal)
+      }, [total])
     
     
     const changeText = (event) => {
@@ -42,29 +51,39 @@ export const Main = () => {
     
 
     const calculoTotal = () => {
-         while(totalEncontrado){
 
-        //let condicion = precioRecuperado>=precioProducto
+        
+        
 
-        if(precioRecuperado>=precioProducto){
-            console.log("se suma al total")
-            setTotal(subTotal2+1)
-        }else{
-            console.log("no sumo nada")
-            setTotalEncontrado(true)
-        }
-
-        /*while (precioRecuperado < precioProducto) {
-            setTotal(subTotal2)
-            setPrecioRecuperado(precioRecuperado+1)
+        for (setTotal(subTotal2); precioProducto <= precioRecuperado; total++) {
+            // Se ejecuta 5 veces, con valores del paso 0 al 4.
+            console.log('calculando total');
+          }
             
+
+        /*let condicion = precioRecuperado>=precioProducto
+
+                if(!condicion){
+                    setTotal(subTotal2)
+                    console.log("el total es: "+ total)
+                    
+                }else{
+                    console.log("no sumo nada")
+                    totalEncontrado = true
+                }   */   
+
+        
           
-        }*/
     }
-    }
+
+     
+
     const handleSubmit = () => {
+        
+
         PriceTire()
         calculoTotal()
+        
         
     }
 
@@ -91,8 +110,10 @@ export const Main = () => {
             <TextField color="error" focused onChange={changeText}/>
             <button onClick={handleSubmit}>Enviar</button>
 
-            <h2>{total}</h2>
+            <h2>Su Precio con envio es de: {Math.ceil(total)}</h2>
         </div>
+
+        
         
     </div>
 
