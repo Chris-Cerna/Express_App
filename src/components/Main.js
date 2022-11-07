@@ -9,13 +9,15 @@ export const Main = () => {
 
     
     const [precioProducto, setPrecioProducto] = useState("")
+    const [precioNormal, setPrecioNormal] = useState("")
     const [CatchText, setCatchText] = useState("")
+    const [CatchText2, setCatchText2] = useState("")
     const [recargoTotal, setRecargoTotal] = useState("")
     const [precioRecuperado, setPrecioRecuperado] = useState("")
     const [subTotal2, setSubtotal2] = useState("")
     const [total, setTotal] = useState("")
     const [Validacion, setValidacion] = useState(false)
-    let totalEncontrado = false
+    
     
     const envio = 66
     const Subtotal =  envio + precioProducto
@@ -48,20 +50,18 @@ export const Main = () => {
     const PriceTire = () => {
         setPrecioProducto(CatchText)
     }
+
+    
+    
+    
     
 
     const calculoTotal = () => {
 
-        
-        
+          let totalEncontrado = false
+          
 
-        for (setTotal(subTotal2); precioProducto <= precioRecuperado; total++) {
-            // Se ejecuta 5 veces, con valores del paso 0 al 4.
-            console.log('calculando total');
-          }
-            
-
-        /*let condicion = precioRecuperado>=precioProducto
+                let condicion = precioRecuperado>=precioProducto
 
                 if(!condicion){
                     setTotal(subTotal2)
@@ -70,20 +70,21 @@ export const Main = () => {
                 }else{
                     console.log("no sumo nada")
                     totalEncontrado = true
-                }   */   
-
-        
-          
+                }
     }
 
-     
+    const refreshPage = () => {
+       const refrescar = window.location.reload
+       return refrescar
+    }
+    
 
     const handleSubmit = () => {
         
 
         PriceTire()
         calculoTotal()
-        
+       
         
     }
 
@@ -93,9 +94,11 @@ export const Main = () => {
 
     /* calculo envio*/
 
-    const [precioNormal, setPrecioNormal] = useState("")
+    
 
-    let totalEnvio = precioNormal - total
+    
+
+    
     
   return (
     <div className='container'>
@@ -107,12 +110,21 @@ export const Main = () => {
 
         <div className='formulario'>
             <h2>INGRESE EL PRECIO MINIMO</h2>
-            <TextField color="error" focused onChange={changeText}/>
-            <button onClick={handleSubmit}>Enviar</button>
+            <TextField color="error" focused onChange={changeText} placeholder="Q "/>
+          
+            
+            <Button variant="contained" color="success" onClick={handleSubmit} >
+              Calcular
+            </Button>
+            <Button variant="contained" color="success" onClick={refreshPage} >
+              Calcular otra cantidad
+            </Button>
 
-            <h2>Su Precio con envio es de: {Math.ceil(total)}</h2>
+            <h3>Su Precio con envio es de: Q{Math.ceil(total)}</h3>
+            
+            
+            
         </div>
-
         
         
     </div>
