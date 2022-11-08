@@ -18,7 +18,11 @@ export const Main = () => {
     const [total, setTotal] = useState("")
     const [Validacion, setValidacion] = useState(false)
     
-    
+      
+
+
+
+
     const envio = 66
     const Subtotal =  envio + precioProducto
     let recargo = Subtotal * 0.04
@@ -52,7 +56,13 @@ export const Main = () => {
     }
 
     
-    
+    /*const newPrice = () =>{
+      setCatchText("")
+      setCatchText2("")
+      setPrecioNormal("")
+      setPrecioProducto("")
+      setTotal("")
+    }*/
     
     
 
@@ -73,7 +83,8 @@ export const Main = () => {
                 }
     }
 
-    const refreshPage = () => {
+    const refreshPage = (e) => {
+      e.preventDefault();
        const refrescar = window.location.reload
        return refrescar
     }
@@ -88,7 +99,7 @@ export const Main = () => {
         
     }
 
-   
+    
 
     
 
@@ -116,9 +127,11 @@ export const Main = () => {
             <Button variant="contained" color="success" onClick={handleSubmit} >
               Calcular
             </Button>
-            <Button variant="contained" color="success" onClick={refreshPage} >
-              Calcular otra cantidad
+            <Button variant="contained" color="success" onClick={handleSubmit} >
+              <a href="javascript:location.reload()" className='Refresh' >Calcular Otro Precio</a>
             </Button>
+            
+        
 
             <h3>Su Precio con envio es de: Q{Math.ceil(total)}</h3>
             

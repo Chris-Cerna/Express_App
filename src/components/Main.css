@@ -18,3 +18,9 @@
     flex-direction: column;
 }
 
+.Refresh{
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    font-family: arial;
+    outline: none;
+}
