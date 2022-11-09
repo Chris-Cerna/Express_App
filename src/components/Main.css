@@ -24,3 +24,13 @@
     font-family: arial;
     outline: none;
 }
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    height: 500px;
+    width: 1500px;
+}
+

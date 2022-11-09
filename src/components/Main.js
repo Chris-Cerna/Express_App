@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import "./Main.css"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
+import { Alert } from '@mui/material';
 
 export const Main = () => {
 
@@ -17,6 +18,7 @@ export const Main = () => {
     const [subTotal2, setSubtotal2] = useState("")
     const [total, setTotal] = useState("")
     const [Validacion, setValidacion] = useState(false)
+    const [precioEnvio, setPrecioEnvio] = useState("")
     
       
 
@@ -54,15 +56,19 @@ export const Main = () => {
     const PriceTire = () => {
         setPrecioProducto(CatchText)
     }
+    const PriceTire2 = () => {
+      setPrecioNormal(CatchText2)
+  }
+
+    const changeText2 = (event) => {
+      setCatchText2(Number(event.target.value))
+  }
 
     
-    /*const newPrice = () =>{
-      setCatchText("")
-      setCatchText2("")
-      setPrecioNormal("")
-      setPrecioProducto("")
-      setTotal("")
-    }*/
+   const calculoEnvio = () =>{
+    PriceTire2()
+    setPrecioEnvio(Number( Math.abs(total - precioNormal) ))
+   }
     
     
 
@@ -83,11 +89,7 @@ export const Main = () => {
                 }
     }
 
-    const refreshPage = (e) => {
-      e.preventDefault();
-       const refrescar = window.location.reload
-       return refrescar
-    }
+   
     
 
     const handleSubmit = () => {
@@ -95,11 +97,12 @@ export const Main = () => {
 
         PriceTire()
         calculoTotal()
-       
-        
+        ShowEnvio()
     }
 
-    
+    const ShowEnvio = () => {
+      setValidacion(true)
+    }
 
     
 
@@ -119,15 +122,17 @@ export const Main = () => {
             <img className='llantas' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR_0Ff4lFGRgtFgs4vY1gkq5S0ELAE5vkSkA&usqp=CAU' alt='imagen de super llantas express'/>
         </div>
 
-        <div className='formulario'>
+        <Alert className='formulario'>
             <h2>INGRESE EL PRECIO MINIMO</h2>
-            <TextField color="error" focused onChange={changeText} placeholder="Q "/>
+            <TextField className='Input' color="success" focused onChange={changeText} placeholder="Q "/>
           
-            
-            <Button variant="contained" color="success" onClick={handleSubmit} >
+            &nbsp;
+            <Button className='Botones' variant="contained" color="success" onClick={handleSubmit} >
               Calcular
             </Button>
-            <Button variant="contained" color="success" onClick={handleSubmit} >
+            &nbsp;
+            &nbsp;
+            <Button className='Botones' variant="contained" color="success" >
               <a href="javascript:location.reload()" className='Refresh' >Calcular Otro Precio</a>
             </Button>
             
@@ -135,9 +140,20 @@ export const Main = () => {
 
             <h3>Su Precio con envio es de: Q{Math.ceil(total)}</h3>
             
+            {Validacion && ( <Alert className='formulario'>
+                                <h2>INGRESE PRECIO REGULAR PARA CALCULAR ENVIO</h2>
+                                <TextField className='Input' color="success" focused onChange={changeText2} placeholder="Q "/>
+                                <Button className='Botones' variant="contained" color="success" onClick={calculoEnvio} >
+                                  Calcular Envio
+                                </Button>
+                                <h3>Su Precio de envio es de: Q{Math.ceil(precioEnvio)}</h3>
+                        </Alert>
+                  
+                  
+                  )}
             
-            
-        </div>
+        </Alert>
+       
         
         
     </div>
