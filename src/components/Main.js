@@ -3,6 +3,7 @@ import "./Main.css"
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Alert } from '@mui/material';
+import SimpleDialogDemo from './ButtonShow';
 
 export const Main = () => {
 
@@ -19,6 +20,7 @@ export const Main = () => {
     const [total, setTotal] = useState("")
     const [Validacion, setValidacion] = useState(false)
     const [precioEnvio, setPrecioEnvio] = useState("")
+    let showInstructions = false
     
       
 
@@ -103,8 +105,10 @@ export const Main = () => {
     const ShowEnvio = () => {
       setValidacion(true)
     }
-
     
+    const ShowInstrucciones = () =>{
+      showInstructions = true
+    }
 
     /* calculo envio*/
 
@@ -122,7 +126,10 @@ export const Main = () => {
             <img className='llantas' src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQR_0Ff4lFGRgtFgs4vY1gkq5S0ELAE5vkSkA&usqp=CAU' alt='imagen de super llantas express'/>
         </div>
 
-        <Alert className='formulario'>
+        
+        <SimpleDialogDemo/>
+
+        <Alert className='formulario' variant='outlined' severity='info'>
             <h2>INGRESE EL PRECIO MINIMO</h2>
             <TextField className='Input' color="success" focused onChange={changeText} placeholder="Q "/>
           
@@ -140,19 +147,26 @@ export const Main = () => {
 
             <h3>Su Precio con envio es de: Q{Math.ceil(total)}</h3>
             
-            {Validacion && ( <Alert className='formulario'>
+            {Validacion && ( <div  className='formulario' variant='outlined' severity='info'>
                                 <h2>INGRESE PRECIO REGULAR PARA CALCULAR ENVIO</h2>
                                 <TextField className='Input' color="success" focused onChange={changeText2} placeholder="Q "/>
                                 <Button className='Botones' variant="contained" color="success" onClick={calculoEnvio} >
                                   Calcular Envio
                                 </Button>
                                 <h3>Su Precio de envio es de: Q{Math.ceil(precioEnvio)}</h3>
-                        </Alert>
-                  
+                        </div>
+                        
                   
                   )}
             
         </Alert>
+
+        
+
+        
+                  
+                  
+                  
        
         
         
