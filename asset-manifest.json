@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Express_App/static/css/main.abe0d7be.css",
+    "main.js": "/Express_App/static/js/main.6c3a2c2c.js",
+    "index.html": "/Express_App/index.html",
+    "main.abe0d7be.css.map": "/Express_App/static/css/main.abe0d7be.css.map",
+    "main.6c3a2c2c.js.map": "/Express_App/static/js/main.6c3a2c2c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.abe0d7be.css",
+    "static/js/main.6c3a2c2c.js"
+  ]
+}
