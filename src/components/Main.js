@@ -140,7 +140,7 @@ export const Main = () => {
             &nbsp;
             &nbsp;
             <Button className='Botones' variant="contained" color="success" >
-              <a href="javascript:location.reload()" className='Refresh' >Calcular Otro Precio</a>
+              <a href="location.reload()" className='Refresh' >Calcular Otro Precio</a>
             </Button>
             
         
